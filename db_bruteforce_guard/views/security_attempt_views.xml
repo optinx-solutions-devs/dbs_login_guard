@@ -66,7 +66,7 @@
         <field name="name">db.guard.ip.state.tree</field>
         <field name="model">db.guard.ip.state</field>
         <field name="arch" type="xml">
-            <list string="Blocked IPs" create="false" delete="false" decoration-danger="blocked or blocked_at">
+            <list string="Blocked IPs" create="false" delete="true" decoration-danger="blocked or blocked_at">
                 <field name="ip_address"/>
                 <field name="failure_count"/>
                 <field name="blocked"/>
@@ -83,7 +83,7 @@
         <field name="name">db.guard.ip.state.form</field>
         <field name="model">db.guard.ip.state</field>
         <field name="arch" type="xml">
-            <form string="IP Security State">
+            <form string="IP Security State" delete="true">
                 <header>
                     <button name="action_unblock" string="Unblock" type="object" class="btn-primary" invisible="not blocked"/>
                 </header>
@@ -135,6 +135,16 @@
         <field name="res_model">db.guard.ip.state</field>
         <field name="view_mode">list,form</field>
         <field name="context">{}</field>
+    </record>
+
+    <record id="action_db_guard_delete_ip_states" model="ir.actions.server">
+        <field name="name">Delete IP States</field>
+        <field name="model_id" ref="model_db_guard_ip_state"/>
+        <field name="binding_model_id" ref="model_db_guard_ip_state"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="group_ids" eval="[(4, ref('base.group_system'))]"/>
+        <field name="state">code</field>
+        <field name="code">records.unlink()</field>
     </record>
 
     <menuitem id="menu_db_guard_root" name="Login Security" parent="base.menu_administration" sequence="85" groups="base.group_system"/>
