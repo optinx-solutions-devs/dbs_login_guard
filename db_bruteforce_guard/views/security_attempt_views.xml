@@ -4,7 +4,7 @@
         <field name="name">db.guard.attempt.tree</field>
         <field name="model">db.guard.attempt</field>
         <field name="arch" type="xml">
-            <list string="Security Attempts" create="false" delete="false" edit="false" decoration-danger="status == 'blocked'">
+            <list string="Security Attempts" create="false" delete="true" edit="false" decoration-danger="status == 'blocked'">
                 <field name="create_date"/>
                 <field name="status" widget="badge" decoration-danger="status == 'blocked'" decoration-success="status == 'success'"/>
                 <field name="ip_address"/>
@@ -24,7 +24,7 @@
         <field name="name">db.guard.attempt.form</field>
         <field name="model">db.guard.attempt</field>
         <field name="arch" type="xml">
-            <form string="Security Attempt" create="false" edit="false" delete="false">
+            <form string="Security Attempt" create="false" edit="false" delete="true">
                 <sheet>
                     <group>
                         <group>
@@ -118,6 +118,16 @@
         <field name="res_model">db.guard.attempt</field>
         <field name="view_mode">list,form</field>
         <field name="context">{}</field>
+    </record>
+
+    <record id="action_db_guard_delete_attempts" model="ir.actions.server">
+        <field name="name">Delete Security Attempts</field>
+        <field name="model_id" ref="model_db_guard_attempt"/>
+        <field name="binding_model_id" ref="model_db_guard_attempt"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="group_ids" eval="[(4, ref('base.group_system'))]"/>
+        <field name="state">code</field>
+        <field name="code">records.unlink()</field>
     </record>
 
     <record id="action_db_guard_ip_states" model="ir.actions.act_window">

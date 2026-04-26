@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_db_guard_attempt_system,access.db.guard.attempt.system,model_db_guard_attempt,base.group_system,1,0,0,0
+access_db_guard_attempt_system,access.db.guard.attempt.system,model_db_guard_attempt,base.group_system,1,0,0,1
 access_db_guard_ip_state_system,access.db.guard.ip.state.system,model_db_guard_ip_state,base.group_system,1,1,1,0
 access_db_guard_config_system,access.db.guard.config.system,model_db_guard_config,base.group_system,1,1,1,0

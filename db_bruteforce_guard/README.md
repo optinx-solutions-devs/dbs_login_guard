@@ -34,7 +34,7 @@ Database Brute Force Guard enhances Odoo authentication security by detecting re
 
 ## Access Rights
 
-- Security Attempts: read-only for system administrators
+- Security Attempts: read/delete for system administrators
 - IP States: read/write/create for system administrators
 - Configuration: read/write/create for system administrators
 
