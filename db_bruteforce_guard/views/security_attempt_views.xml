@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_db_guard_attempt_tree" model="ir.ui.view">
+        <field name="name">db.guard.attempt.tree</field>
+        <field name="model">db.guard.attempt</field>
+        <field name="arch" type="xml">
+            <tree string="Security Attempts" create="false" delete="true" edit="false" decoration-danger="status == 'blocked'">
+                <field name="create_date"/>
+                <field name="status" widget="badge" decoration-danger="status == 'blocked'" decoration-success="status == 'success'"/>
+                <field name="ip_address"/>
+                <field name="login"/>
+                <field name="database"/>
+                <field name="route"/>
+                <field name="device_type"/>
+                <field name="browser"/>
+                <field name="os_name"/>
+                <field name="country"/>
+                <field name="city"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_db_guard_attempt_form" model="ir.ui.view">
+        <field name="name">db.guard.attempt.form</field>
+        <field name="model">db.guard.attempt</field>
+        <field name="arch" type="xml">
+            <form string="Security Attempt" create="false" edit="false" delete="true">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="create_date"/>
+                            <field name="status"/>
+                            <field name="state_id"/>
+                            <field name="ip_address"/>
+                            <field name="login"/>
+                            <field name="database"/>
+                            <field name="route"/>
+                            <field name="method"/>
+                        </group>
+                        <group>
+                            <field name="device_type"/>
+                            <field name="browser"/>
+                            <field name="os_name"/>
+                            <field name="user_agent"/>
+                            <field name="forwarded_for"/>
+                            <field name="accept_language"/>
+                            <field name="country"/>
+                            <field name="region"/>
+                            <field name="city"/>
+                            <field name="timezone"/>
+                            <field name="latitude"/>
+                            <field name="longitude"/>
+                            <field name="isp"/>
+                            <field name="organization"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="details_json" widget="text"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_db_guard_ip_state_tree" model="ir.ui.view">
+        <field name="name">db.guard.ip.state.tree</field>
+        <field name="model">db.guard.ip.state</field>
+        <field name="arch" type="xml">
+            <tree string="Blocked IPs" create="false" delete="true" decoration-danger="blocked or blocked_at">
+                <field name="ip_address"/>
+                <field name="failure_count"/>
+                <field name="blocked"/>
+                <field name="blocked_at" decoration-danger="blocked_at"/>
+                <field name="last_seen"/>
+                <field name="last_login"/>
+                <field name="country"/>
+                <field name="city"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_db_guard_ip_state_form" model="ir.ui.view">
+        <field name="name">db.guard.ip.state.form</field>
+        <field name="model">db.guard.ip.state</field>
+        <field name="arch" type="xml">
+            <form string="IP Security State" delete="true">
+                <header>
+                    <button name="action_unblock" string="Unblock" type="object" class="btn-primary" invisible="not blocked"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="ip_address" readonly="1"/>
+                            <field name="failure_count" readonly="1"/>
+                            <field name="blocked"/>
+                            <field name="blocked_at" readonly="1"/>
+                            <field name="first_seen" readonly="1"/>
+                            <field name="last_seen" readonly="1"/>
+                            <field name="last_login" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="country" readonly="1"/>
+                            <field name="region" readonly="1"/>
+                            <field name="city" readonly="1"/>
+                            <field name="timezone" readonly="1"/>
+                            <field name="isp" readonly="1"/>
+                            <field name="organization" readonly="1"/>
+                            <field name="alert_sent" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_db_guard_attempts" model="ir.actions.act_window">
+        <field name="name">Security Attempts</field>
+        <field name="res_model">db.guard.attempt</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="action_db_guard_delete_attempts" model="ir.actions.server">
+        <field name="name">Delete Security Attempts</field>
+        <field name="model_id" ref="model_db_guard_attempt"/>
+        <field name="binding_model_id" ref="model_db_guard_attempt"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="groups_id" eval="[(4, ref('base.group_system'))]"/>
+        <field name="state">code</field>
+        <field name="code">records.unlink()</field>
+    </record>
+
+    <record id="action_db_guard_ip_states" model="ir.actions.act_window">
+        <field name="name">IP States</field>
+        <field name="res_model">db.guard.ip.state</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="action_db_guard_delete_ip_states" model="ir.actions.server">
+        <field name="name">Delete IP States</field>
+        <field name="model_id" ref="model_db_guard_ip_state"/>
+        <field name="binding_model_id" ref="model_db_guard_ip_state"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="groups_id" eval="[(4, ref('base.group_system'))]"/>
+        <field name="state">code</field>
+        <field name="code">records.unlink()</field>
+    </record>
+
+    <menuitem id="menu_db_guard_root" name="Login Security" parent="base.menu_administration" sequence="85" groups="base.group_system"/>
+    <menuitem id="menu_db_guard_attempts" name="Security Attempts" parent="menu_db_guard_root" action="action_db_guard_attempts" sequence="10" groups="base.group_system"/>
+    <menuitem id="menu_db_guard_ip_states" name="IP States" parent="menu_db_guard_root" action="action_db_guard_ip_states" sequence="20" groups="base.group_system"/>
+    <menuitem id="menu_db_guard_configuration" name="Configuration" parent="menu_db_guard_root" action="action_db_guard_settings" sequence="30" groups="base.group_system"/>
+</odoo>
