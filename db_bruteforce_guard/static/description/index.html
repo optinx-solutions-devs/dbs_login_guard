@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database Brute Force Guard</title>
+  <style>
+    :root {
+      --bg: #f4f8f8;
+      --ink: #111827;
+      --muted: #4b5563;
+      --brand: #0f766e;
+      --brand-2: #115e59;
+      --panel: #ffffff;
+      --line: #d1d5db;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: radial-gradient(circle at 20% 10%, #dff5f3 0, #f4f8f8 45%, #edf3f3 100%);
+      color: var(--ink);
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff;
+      border-radius: 18px;
+      padding: 36px 28px;
+      box-shadow: 0 16px 40px rgba(17, 24, 39, 0.16);
+    }
+    .pill {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 999px;
+      padding: 6px 12px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 38px;
+      line-height: 1.15;
+    }
+    .subtitle {
+      margin: 0;
+      font-size: 18px;
+      color: #dcfce7;
+      line-height: 1.5;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .card h3 {
+      margin: 0 0 10px 0;
+      font-size: 17px;
+      color: #0b3f3b;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px;
+      margin-top: 16px;
+    }
+    .section h2 {
+      margin: 0 0 12px 0;
+      font-size: 24px;
+      color: #0b3f3b;
+    }
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+    .steps li { margin-bottom: 8px; }
+    .footer {
+      text-align: center;
+      color: #374151;
+      font-size: 14px;
+      margin: 20px 0 0;
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 30px; }
+      .subtitle { font-size: 16px; }
+      .hero { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div style="max-width:1080px; margin:0 auto; padding:18px;">
+    <div style="background:#ffffff; border:1px solid #dde5ea; border-radius:12px; padding:20px; margin-bottom:16px;">
+      <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:12px; border-collapse:separate; border-spacing:6px 0;">
+        <tr>
+          <td bgcolor="#0f766e" style="background:#0f766e; color:#ffffff; font-size:12px; font-weight:700; border-radius:999px; padding:6px 10px;">ODOO 19 READY</td>
+          <td bgcolor="#e7f4f2" style="background:#e7f4f2; color:#0f4a46; font-size:12px; font-weight:700; border-radius:999px; padding:6px 10px; border:1px solid #b9e0da;">COMMUNITY</td>
+          <td bgcolor="#e7f4f2" style="background:#e7f4f2; color:#0f4a46; font-size:12px; font-weight:700; border-radius:999px; padding:6px 10px; border:1px solid #b9e0da;">ENTERPRISE</td>
+        </tr>
+      </table>
+
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+        <div style="flex:1; min-width:260px;">
+          <h1 style="margin:0 0 10px; font-size:44px; line-height:1.05; color:#111827;">Database Brute Force Guard</h1>
+          <p style="margin:0; font-size:20px; line-height:1.45; color:#5b6470;">Stop repeated login attacks with configurable thresholds, automatic IP blocking, and complete security audit trails.</p>
+        </div>
+        <div style="width:140px; text-align:center;">
+          <img src="./assets/block_ip.gif" alt="Brute Force Guard Demo" style="width:128px; height:auto; border-radius:16px; border:1px solid #d9e3e2; background:#f6f8fa;" />
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px;">
+      <div style="flex:1; min-width:180px; background:#ffffff; border:1px solid #dce7e7; border-radius:10px; padding:10px; text-align:center;">
+        <div style="font-size:22px; font-weight:700; color:#134e4a;">Login Tracking</div>
+        <div style="font-size:13px; color:#64748b;">Audit Trail</div>
+      </div>
+      <div style="flex:1; min-width:180px; background:#ffffff; border:1px solid #dce7e7; border-radius:10px; padding:10px; text-align:center;">
+        <div style="font-size:22px; font-weight:700; color:#134e4a;">Auto IP Block</div>
+        <div style="font-size:13px; color:#64748b;">Threshold Based</div>
+      </div>
+      <div style="flex:1; min-width:180px; background:#ffffff; border:1px solid #dce7e7; border-radius:10px; padding:10px; text-align:center;">
+        <div style="font-size:22px; font-weight:700; color:#134e4a;">Email Alerts</div>
+        <div style="font-size:13px; color:#64748b;">Configurable</div>
+      </div>
+      <div style="flex:1; min-width:180px; background:#ffffff; border:1px solid #dce7e7; border-radius:10px; padding:10px; text-align:center;">
+        <div style="font-size:22px; font-weight:700; color:#134e4a;">Geo Intelligence</div>
+        <div style="font-size:13px; color:#64748b;">Optional</div>
+      </div>
+    </div>
+
+    <div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:18px; margin-bottom:16px;">
+      <h2 style="margin:0 0 10px 0; font-size:22px; color:#0b3f3b;">How It Works</h2>
+      <ul style="margin:0; padding-left:18px; color:#4b5563; line-height:1.65; font-size:15px;">
+        <li>Checks if the source IP is already blocked before authentication.</li>
+        <li>On failed authentication, records the attempt and recalculates rolling failure count.</li>
+        <li>Sends alerts when the configured alert threshold is reached.</li>
+        <li>Blocks the IP when the block threshold is reached.</li>
+        <li>Resets failure count after a successful login from a non-blocked IP.</li>
+      </ul>
+    </div>
+
+    <div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:18px; margin-bottom:16px;">
+      <h2 style="margin:0 0 10px 0; font-size:22px; color:#0b3f3b;">Configuration</h2>
+      <ul style="margin:0; padding-left:18px; color:#4b5563; line-height:1.65; font-size:15px;">
+        <li>Failure Window (minutes)</li>
+        <li>Alert After Failed Attempts</li>
+        <li>Block After Failed Attempts</li>
+        <li>Alert Recipient Emails</li>
+        <li>Enable Geolocation Lookup</li>
+      </ul>
+    </div>
+
+    <div style="background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:18px; margin-bottom:16px;">
+      <h2 style="margin:0 0 10px 0; font-size:22px; color:#0b3f3b;">Compatibility</h2>
+      <ul style="margin:0; padding-left:18px; color:#4b5563; line-height:1.65; font-size:15px;">
+        <li>Odoo 19 Community and Enterprise</li>
+        <li>Depends on: base, mail, web</li>
+        <li>Access restricted to system administrators</li>
+      </ul>
+    </div>
+
+    <p style="text-align:center; color:#374151; font-size:14px; margin:20px 0 0;">Support: optinassist@gmail.com</p>
+  </div>
+</body>
+</html>
