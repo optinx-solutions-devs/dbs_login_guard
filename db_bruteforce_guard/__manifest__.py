@@ -16,7 +16,7 @@
     """,
     "author": "Optin Solutions",
     "support": "optinassist@gmail.com",
-    "price": 19,
+    "price": 11,
     "currency": "USD",
     "license": "LGPL-3",
     "depends": ["base", "mail", "web"],
